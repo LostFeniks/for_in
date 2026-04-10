@@ -1,66 +1,37 @@
 # Зависимости
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 package-lock.json
 yarn.lock
 
 # Сборка проекта
 dist/
 build/
-*.user.js
 
 # Логи
-logs/
 *.log
+npm-debug.log*
 
-# IDE и редакторы
+# Тесты и покрытие
+coverage/
+.nyc_output/
+
+# ESLint
+.eslintcache
+
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 .DS_Store
-.env.local
-.env.*.local
 
-# Файлы покрытия тестов
-coverage/
-.nyc_output/
+# ОС
+Thumbs.db
+Desktop.ini
+.DS_Store
 
 # Временные файлы
 *.tmp
 *.temp
-
-# ОС Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# ОС macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# ОС Linux
-.directory
-*.directory
-
-# Файлы отладки
-*.pid
-*.seed
-*.pid.lock
-
-# Документация (если есть)
-docs/_build/
-
-# Бекапы
 *.bak
-*.backup
-
-# Конфиги с чувствительными данными
-.env
-.env.production
-.env.development

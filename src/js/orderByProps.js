@@ -9,8 +9,8 @@ function orderByProps(obj, order = []) {
   const processedKeys = new Set();
 
   // 1. Добавляем свойства в порядке, указанном в массиве order
-  for (const key in order) {
-    const orderKey = order[key];
+  for (let i = 0; i < order.length; i += 1) {
+    const orderKey = order[i];
     if (orderKey in obj) {
       result.push({ key: orderKey, value: obj[orderKey] });
       processedKeys.add(orderKey);
@@ -19,7 +19,9 @@ function orderByProps(obj, order = []) {
 
   // 2. Собираем оставшиеся свойства
   const remainingProps = [];
-  for (const key in obj) {
+  const keys = Object.keys(obj);
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i];
     if (!processedKeys.has(key)) {
       remainingProps.push({ key, value: obj[key] });
     }
@@ -33,20 +35,18 @@ function orderByProps(obj, order = []) {
   });
 
   // 4. Добавляем отсортированные оставшиеся свойства
-  for (const prop of remainingProps) {
-    result.push(prop);
+  for (let i = 0; i < remainingProps.length; i += 1) {
+    result.push(remainingProps[i]);
   }
 
   return result;
 }
 
-// Поддержка обоих форматов модулей
+// Экспорт для разных сред
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = orderByProps;
-  module.exports.default = orderByProps;
 }
 
-// Для использования в браузере через глобальную переменную
 if (typeof window !== 'undefined') {
   window.orderByProps = orderByProps;
 }

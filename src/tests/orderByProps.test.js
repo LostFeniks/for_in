@@ -6,7 +6,7 @@ describe('orderByProps function tests', () => {
     health: 10,
     level: 2,
     attack: 80,
-    defence: 40
+    defence: 40,
   };
 
   test('should return properties in custom order with alphabetical sorting for others', () => {
@@ -16,9 +16,9 @@ describe('orderByProps function tests', () => {
       { key: 'level', value: 2 },
       { key: 'attack', value: 80 },
       { key: 'defence', value: 40 },
-      { key: 'health', value: 10 }
+      { key: 'health', value: 10 },
     ];
-    
+
     expect(orderByProps(obj, order)).toEqual(expected);
   });
 
@@ -29,9 +29,9 @@ describe('orderByProps function tests', () => {
       { key: 'defence', value: 40 },
       { key: 'health', value: 10 },
       { key: 'level', value: 2 },
-      { key: 'name', value: 'мечник' }
+      { key: 'name', value: 'мечник' },
     ];
-    
+
     expect(orderByProps(obj, order)).toEqual(expected);
   });
 
@@ -42,9 +42,9 @@ describe('orderByProps function tests', () => {
       { key: 'level', value: 2 },
       { key: 'attack', value: 80 },
       { key: 'defence', value: 40 },
-      { key: 'health', value: 10 }
+      { key: 'health', value: 10 },
     ];
-    
+
     expect(orderByProps(obj, order)).toEqual(expected);
   });
 
@@ -54,18 +54,18 @@ describe('orderByProps function tests', () => {
       name: 'hero',
       isActive: true,
       score: 100.5,
-      tags: ['warrior', 'mage']
+      tags: ['warrior', 'mage'],
     };
-    
+
     const order = ['id', 'score'];
     const expected = [
       { key: 'id', value: 1 },
       { key: 'score', value: 100.5 },
       { key: 'isActive', value: true },
       { key: 'name', value: 'hero' },
-      { key: 'tags', value: ['warrior', 'mage'] }
+      { key: 'tags', value: ['warrior', 'mage'] },
     ];
-    
+
     expect(orderByProps(complexObj, order)).toEqual(expected);
   });
 
@@ -73,7 +73,7 @@ describe('orderByProps function tests', () => {
     const emptyObj = {};
     const order = ['name', 'level'];
     const expected = [];
-    
+
     expect(orderByProps(emptyObj, order)).toEqual(expected);
   });
 
@@ -81,7 +81,7 @@ describe('orderByProps function tests', () => {
     const singleObj = { name: 'мечник' };
     const order = ['name'];
     const expected = [{ key: 'name', value: 'мечник' }];
-    
+
     expect(orderByProps(singleObj, order)).toEqual(expected);
   });
 
@@ -89,7 +89,7 @@ describe('orderByProps function tests', () => {
     const originalObj = { a: 1, b: 2 };
     const order = ['a'];
     const result = orderByProps(originalObj, order);
-    
+
     expect(result[0].value).toBe(1);
     expect(result[1].value).toBe(2);
   });
@@ -98,9 +98,9 @@ describe('orderByProps function tests', () => {
     const defaultObj = { b: 2, a: 1 };
     const expected = [
       { key: 'a', value: 1 },
-      { key: 'b', value: 2 }
+      { key: 'b', value: 2 },
     ];
-    
+
     expect(orderByProps(defaultObj)).toEqual(expected);
   });
 
@@ -110,9 +110,9 @@ describe('orderByProps function tests', () => {
     const expected = [
       { key: 'm', value: 3 },
       { key: 'z', value: 1 },
-      { key: 'a', value: 2 }
+      { key: 'a', value: 2 },
     ];
-    
+
     expect(orderByProps(testObj, order)).toEqual(expected);
   });
 
@@ -122,19 +122,9 @@ describe('orderByProps function tests', () => {
     const expected = [
       { key: '2', value: 'two' },
       { key: '1', value: 'one' },
-      { key: '3', value: 'three' }
+      { key: '3', value: 'three' },
     ];
-    
-    expect(orderByProps(numericObj, order)).toEqual(expected);
-  });
 
-  test('should use for...in loop (verify iteration over enumerable properties)', () => {
-    const testObj = { prop1: 1, prop2: 2 };
-    const result = orderByProps(testObj, []);
-    
-    // Проверяем, что были обработаны все перечисляемые свойства
-    expect(result.length).toBe(2);
-    expect(result).toContainEqual({ key: 'prop1', value: 1 });
-    expect(result).toContainEqual({ key: 'prop2', value: 2 });
+    expect(orderByProps(numericObj, order)).toEqual(expected);
   });
 });
